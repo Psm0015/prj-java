@@ -6,6 +6,7 @@ import org.senai.prjjava.entity.Usuario;
 import org.senai.prjjava.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //http://localhost:8080/api/usuario/add?nome=pedro&email=pedro@gmail.com
 @Controller
 @RequestMapping(path="/api/usuario")
+@CrossOrigin("*")
 public class UsuarioController {
     
     @Autowired
