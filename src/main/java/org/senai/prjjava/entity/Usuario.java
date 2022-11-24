@@ -1,40 +1,26 @@
 package org.senai.prjjava.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name="Usuario")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    @Column(unique = true)
+    private String login;
     private String email;
-
-    public Integer getId(){
-        return id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
-
-
-    public String getNome(){
-        return nome;
-    }
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-
-
-    public String getEmail(){
-        return email;
-    }
-    public void setEmail(String email){
-        this.email = email;
-    }
+    private String nome;
+    private String password;
 }

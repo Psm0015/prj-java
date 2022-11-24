@@ -1,56 +1,55 @@
 package org.senai.prjjava.controller;
 
-import java.util.Optional;
-
 import org.senai.prjjava.entity.Usuario;
 import org.senai.prjjava.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-//http://localhost:8080/api/usuario/add?nome=pedro&email=pedro@gmail.com
-@Controller
-@RequestMapping(path="/api/usuario")
-@CrossOrigin("*")
+@RestController
+@RequestMapping("/api/usuario")
 public class UsuarioController {
-    
-    @Autowired
-    UsuarioRepository uRepository;
-    @PostMapping("/")
-    public @ResponseBody Integer addUsuario(@RequestBody Usuario objU){
-        uRepository.save(objU);
-        return objU.getId();
+
+    private final UsuarioRepository repository;
+    private final PasswordEncoder encoder;
+
+    public UsuarioController(UsuarioRepository repository, PasswordEncoder encoder){
+        this.repository = repository;
+        this.encoder = encoder;
     }
 
     @GetMapping("/")
-    public @ResponseBody Iterable<Usuario> buscarUsuarios(){
-        return uRepository.findAll();
+    public ResponseEntity<List<Usuario>> listarTodos(){
+        return ResponseEntity.ok(repository.findAll());
     }
 
-    //http://localhost:8080/api/usuario/2 -  busca usuario unico usando a variável de path(caminho)
-    @GetMapping("/{id}")
-    public @ResponseBody Optional<Usuario> buscarUsuario(@PathVariable Integer id){
-        return uRepository.findById(id);
+    @PostMapping("/")
+    public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario){
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
+        return ResponseEntity.ok(repository.save(usuario));
     }
-    @PutMapping("/")
-    public @ResponseBody Usuario atualizar(@RequestBody Usuario objU){
-        uRepository.save(objU);
-        return objU;
+    @GetMapping("/login")
+    public ResponseEntity<Boolean> validarSenha(@RequestParam String login,@RequestParam String password){
+
+        Optional<Usuario> optUsuario = repository.findByLogin(login);
+        if (optUsuario.isEmpty()){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+        }
+        Usuario usuario =optUsuario.get();
+        boolean valid = encoder.matches(password, usuario.getPassword());
+
+        HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
+
+        return ResponseEntity.status(status).body(valid);
     }
-
-
-    @DeleteMapping("/{id}")
-    public @ResponseBody String apagar(@PathVariable Integer id){
-        uRepository.deleteById(id);
-        return "Usuario deletado com Sucesso!";
-    }
-
 }
