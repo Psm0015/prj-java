@@ -23,4 +23,7 @@ public class Usuario {
     private String email;
     private String nome;
     private String password;
+    @Column(name="verification_code", length = 64)
+    private String verificationCode;
+    private boolean enabled;
 }
