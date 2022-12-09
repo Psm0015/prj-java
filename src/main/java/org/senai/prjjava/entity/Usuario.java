@@ -20,7 +20,7 @@ public class Usuario {
     private Integer id;
     @Column(unique = true)
     private String login;
-    private String email;
+    // private String email;
     private String nome;
     private String password;
     @Column(name="verification_code", length = 64)

@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -99,20 +98,6 @@ public class UsuarioController {
             return ResponseEntity.ok(urepository.save(usuario));
         }
         return ResponseEntity.badRequest().body(null);
-    }
-    @GetMapping("/login")
-    public ResponseEntity<Boolean> validarSenha(@RequestParam String login,@RequestParam String password){
-
-        Optional<Usuario> optUsuario = urepository.findByLogin(login);
-        if (optUsuario.isEmpty()){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
-        }
-        Usuario usuario =optUsuario.get();
-        boolean valid = encoder.matches(password, usuario.getPassword());
-
-        HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
-
-        return ResponseEntity.status(status).body(valid);
     }
     @GetMapping("/{id}")
     public @ResponseBody Optional<Usuario> buscarUsuario(@PathVariable Integer id){
