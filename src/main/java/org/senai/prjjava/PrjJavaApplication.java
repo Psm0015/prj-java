@@ -28,10 +28,10 @@ public class PrjJavaApplication {
 	// public String hello(@RequestParam(value = "nome", defaultValue = "World") String nome) {
 	// return String.format("Hello %s!", nome);
 	// }
-	@Bean
-	public PasswordEncoder getPasswordEncoder() {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
-	}
+	// @Bean
+	// public PasswordEncoder getPasswordEncoder() {
+	// 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	// 	return encoder;
+	// }
 
 }
