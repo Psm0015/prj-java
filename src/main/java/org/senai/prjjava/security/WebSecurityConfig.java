@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/noauth/**").permitAll()
                 .antMatchers("/usuario").hasAnyRole("User","Admin")
                 .antMatchers("/adm/**").hasAnyRole("Admin")
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
