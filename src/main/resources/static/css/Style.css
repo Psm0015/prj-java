@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Caramel&display=swap');
+#alerta{
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top:0
+}
+#NomeLoja{
+    font-size: 35px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Caramel', cursive;
+}
+body{
+    background-color: #ccc;
+}
+.container{
+    background-color: white;
+}
+

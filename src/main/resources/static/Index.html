@@ -1,13 +1,170 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Pedro Mota">
-    <title>Teste</title>
+    <title>PedroLoja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sidenav.css">
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/slidestyle.css">
 </head>
 <body>
-    <p>Olá Spring!</p>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <p id="Titulo" onclick="window.location.replace('login.html');">Olá, Faça seu Login</p>
+        <a href="#">
+            <i class="fa-solid fa-user"></i>
+            Minha Conta
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Meu Carrinho
+        </a>
+        <a href="#">
+            <i class="fa-sharp fa-solid fa-basket-shopping"></i>
+            Meus Pedidos
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-phone"></i>
+            Fale Conosco
+        </a>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="fa-solid fa-bars nav-link" onclick="openNav()" ></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="NomeLoja" href="loja.html">PEDRO MOTA</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a onclick="sair()" class="nav-link" href="index.html">Sair</a>
+              </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Promo hora.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Promo Natal.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Promo Virada.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <br>
+        <div class="card-group">
+            <div class="card">
+              <img class="card-img-top" src="img/g403-img01_1.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Mouse Gamer</h5>
+                <p class="card-text">Logitech G403 HERO com RGB LIGHTSYNC, 6 Botões Programáveis, Ajuste de Peso e Sensor HERO 25K.</p>
+                <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 179,99</h6></p>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="img/g512.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Teclado Mecânico Gamer</h5>
+                <p class="card-text">Logitech G512 Carbon com Layout ABNT2, RGB LIGHTSYNC, USB Passthrough, Switch Exclusivo GX Brown .</p>
+                <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 549,99</h6></p>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="img/hs50.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Headset</h5>
+                <p class="card-text">Corsair, Hs50 Pro Gaming Carbono, P2, 50mm</p>
+                <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 441,36</h6></p>
+              </div>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="img/hs50.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Headset</h5>
+                  <p class="card-text">Corsair, Hs50 Pro Gaming Carbono, P2, 50mm</p>
+                  <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 441,36</h6></p>
+                </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="img/g403-img01_1.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Mouse Gamer</h5>
+                <p class="card-text">Logitech G403 HERO com RGB LIGHTSYNC, 6 Botões Programáveis, Ajuste de Peso e Sensor HERO 25K.</p>
+                <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 179,99</h6></p>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="img/g512.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Teclado Mecânico Gamer</h5>
+                <p class="card-text">Logitech G512 Carbon com Layout ABNT2, RGB LIGHTSYNC, USB Passthrough, Switch Exclusivo GX Brown .</p>
+                <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 549,99</h6></p>
+              </div>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="img/g512.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Teclado Mecânico Gamer</h5>
+                  <p class="card-text">Logitech G512 Carbon com Layout ABNT2, RGB LIGHTSYNC, USB Passthrough, Switch Exclusivo GX Brown .</p>
+                  <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 549,99</h6></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="img/hs50.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Headset</h5>
+                  <p class="card-text">Corsair, Hs50 Pro Gaming Carbono, P2, 50mm</p>
+                  <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 441,36</h6></p>
+                </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="img/g403-img01_1.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Mouse Gamer</h5>
+                <p class="card-text">Logitech G403 HERO com RGB LIGHTSYNC, 6 Botões Programáveis, Ajuste de Peso e Sensor HERO 25K.</p>
+                <p class="card-text"><h6 class="text" style="color: rgb(78, 78, 255);">R$ 179,99</h6></p>
+              </div>
+            </div>
+        </div>
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="https://www.instagram.com/peedroomota/" class="nav-link px-2 text-muted" target="_blank"><i class="fa fa-instagram fa-2xl" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a href="https://github.com/Psm0015" class="nav-link px-2 text-muted" target="_blank"><i class="fa-brands fa-github fa-2xl"></i></a></li>
+            <li class="nav-item"><a href="https://wa.me/5561999766526" class="nav-link px-2 text-muted" target="_blank"><i class="fa-brands fa-whatsapp fa-2xl"></i></a></li>
+            <li class="nav-item"><a href="https://www.linkedin.com/in/pedro-santos-da-mota-235314222/" class="nav-link px-2 text-muted" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a></li>
+        </ul>
+        <p class="text-center text-muted">&copy; 2022 Pedro Mota, Student</p>
+    </footer>
 </body>
+<script src="js/scriptslide.js"></script>
+<script src="https://kit.fontawesome.com/658c970e09.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/sidenav.js"></script>
 </html>
