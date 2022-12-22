@@ -41,14 +41,14 @@ public class AdminController {
     
     private final UsuarioRepository urepository;
     private final PasswordEncoder encoder;
-    private EmailSenderService email;
+    // private EmailSenderService email;
     private ProdutoRepository pRepository;
     
 
-    public AdminController(UsuarioRepository repository, PasswordEncoder encoder, EmailSenderService email, ProdutoRepository pRepository){
+    public AdminController(UsuarioRepository repository, PasswordEncoder encoder, ProdutoRepository pRepository){
         this.urepository = repository;
         this.encoder = encoder;
-        this.email = email;
+        // this.email = email;
         this.pRepository = pRepository;
         // this.service = service;
     }

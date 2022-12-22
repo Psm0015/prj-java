@@ -1,5 +1,6 @@
 package org.senai.prjjava.controller;
 
+import org.senai.prjjava.data.DetalheUsuarioData;
 import org.senai.prjjava.entity.Produto;
 import org.senai.prjjava.entity.Usuario;
 import org.senai.prjjava.repository.ProdutoRepository;
@@ -13,6 +14,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,67 +61,29 @@ public class UsuarioController {
     public @ResponseBody Optional<Produto> buscarProduto(@PathVariable Integer id){
         return pRepository.findById(id);
     }
-    // @GetMapping("/")
-    // public ResponseEntity<List<Usuario>> listarTodos(){
-    //     return ResponseEntity.ok(urepository.findAll());
-        
+    // @GetMapping("/identificar/{tk}")
+    // public String identificar(@PathVariable String tk){
+    //     return urepository.findByTk(tk).getPrimeiro_nome() + urepository.findByTk(tk).getSobrenome();
     // }
 
-    // @PostMapping("/novo")
-    // public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario, HttpServletRequest request){
-    //     Optional<Usuario> opusuario = urepository.findByLogin(usuario.getLogin());
+    @GetMapping("/identificar/{tk}")
+    public Usuario buscarUsuario(@PathVariable String tk){
+        return urepository.findByTk(tk);
+    }
+    @PutMapping("/editar/{tk}")
+    public ResponseEntity<Usuario> editar(@PathVariable String tk, @RequestBody Usuario usuario){
+        Optional<Usuario> optUsuario = urepository.findById(urepository.findByTk(tk).getId());
+        if (optUsuario.isEmpty()){
+            return ResponseEntity.badRequest().body(null);
+        }
+        Usuario usuario2 = optUsuario.get();
+        boolean valid = encoder.matches(usuario.getPassword(), usuario2.getPassword());
 
-    //     if(opusuario.isEmpty()){
-    //         usuario.setPassword(encoder.encode(usuario.getPassword()));
-    //         String validcod = RandomString.make(64);
-    //         usuario.setVerificationCode(validcod);
-    //         usuario.setEnabled(false);
-    //         String siteURL = "http://localhost:8080/api/usuario/validar?validarcod="+validcod;
-    //         email.emailconfirm(usuario, siteURL);
-    //         // service.registrar(usuario, service.getSiteURL(request));
-    //         return ResponseEntity.ok(urepository.save(usuario));
-    //     }
-    //     return ResponseEntity.badRequest().body(null);
-        
-    // }
-
-    // @GetMapping("/validar")
-    // public String validarEmail(@RequestParam String validarcod){
-    //     Optional<Usuario> usuariover = urepository.findByVerificationCode(validarcod);
-    //     if(usuariover == null || usuariover.get().getVerificationCode() == null){
-    //         return "<h1>Usuário não existe.</h1>";
-    //     }else{
-    //         usuariover.get().setVerificationCode(null);
-    //         usuariover.get().setEnabled(true);
-    //         ResponseEntity.ok(urepository.save(usuariover.get()));
-    //         return "<h1>Usuário verificado com sucesso!</h1>";
-    //     }
-
-
-    // }
-
-    // @PutMapping("/editar")
-    // public ResponseEntity<Usuario> editar(@RequestBody Usuario usuario){
-    //     Optional<Usuario> optUsuario = urepository.findById(usuario.getId());
-    //     if (optUsuario.isEmpty()){
-    //         return ResponseEntity.badRequest().body(null);
-    //     }
-    //     Usuario usuario2 = optUsuario.get();
-    //     boolean valid = encoder.matches(usuario.getPassword(), usuario2.getPassword());
-
-    //     if(valid){
-    //         usuario.setPassword(encoder.encode(usuario.getPassword()));
-    //         return ResponseEntity.ok(urepository.save(usuario));
-    //     }
-    //     return ResponseEntity.badRequest().body(null);
-    // }
-    // @GetMapping("/{id}")
-    // public @ResponseBody Optional<Usuario> buscarUsuario(@PathVariable Integer id){
-    //     return urepository.findById(id);
-    // }
-    // @DeleteMapping("/{id}")
-    // public @ResponseBody String apagar(@PathVariable Integer id){
-    //     urepository.deleteById(id);
-    //     return "Usuario deletado com Sucesso!";
-    // }
+        if(valid){
+            usuario.setPassword(encoder.encode(usuario.getPassword()));
+            return ResponseEntity.ok(urepository.save(usuario));
+        }
+        return ResponseEntity.badRequest().body(null);
+    }
+    
 }

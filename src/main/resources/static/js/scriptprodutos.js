@@ -3,7 +3,7 @@ var prList;
 token=sessionStorage.getItem('token');
 listar()
 function listar(){
-    ajax.open("GET","http://localhost:8080/api/produto/");
+    ajax.open("GET","http://localhost:8080/usuario/buscarprds");
     ajax.setRequestHeader("Authorization", "Bearer "+token);
     ajax.send();
     ajax.onload = function(){
@@ -35,14 +35,16 @@ function incluir(){
     produto.nome = document.getElementById("addnome").value;
     produto.descricao = document.getElementById("adddesc").value;
     produto.valor = document.getElementById("addvalor").value;
-    ajax.open("POST","http://localhost:8080/api/produto/");
-    ajax.setRequestHeader("Authorization", "Bearer "+token);
+    produto.img = document.getElementById("addimg").value;
+    ajax.open("POST","http://localhost:8080/adm/addprd");
+    ajax.setRequestHeader("Authorization", sessionStorage.getItem('token'));
     ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     ajax.send(JSON.stringify(produto));
     ajax.onload = function(){
         document.getElementById("addnome").value =''
         document.getElementById("adddesc").value=''
         document.getElementById("addvalor").value=''
+        document.getElementById("addimg").value=''
         if(this.status == 200){
             alertasucesso('Produto inserido com <strong>Sucesso!</strong>');
         }
@@ -62,8 +64,8 @@ function editarconfirm(){
     pred.nome = document.getElementById("nomeed").value;
     pred.descricao = document.getElementById("desced").value;
     pred.valor = document.getElementById("valored").value;
-    ajax.open("PUT","http://localhost:8080/api/produto/");
-    ajax.setRequestHeader("Authorization", "Bearer "+token);
+    ajax.open("PUT","http://localhost:8080/adm/atualizarprd");
+    ajax.setRequestHeader("Authorization", sessionStorage.getItem('token'));
     ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     ajax.send(JSON.stringify(pred));
     ajax.onload = function(){

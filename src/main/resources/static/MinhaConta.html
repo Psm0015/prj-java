@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sidenav.css">
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/slidestyle.css">
+    <title>Minha Conta</title>
+</head>
+<body>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <p id="fsl"><p id="Titulo" data-bs-toggle='modal' data-bs-target='#modallogin'>Olá, Faça seu Login!</p></p>
+        <a href="#">
+            <i class="fa-solid fa-user"></i>
+            Minha Conta
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Meu Carrinho
+        </a>
+        <a href="#">
+            <i class="fa-sharp fa-solid fa-basket-shopping"></i>
+            Meus Pedidos
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-phone"></i>
+            Fale Conosco
+        </a>
+        <a href="#" onclick="sair()">
+          <i class="fa-solid fa-door-open"></i>
+          Sair
+      </a>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="fa-solid fa-bars nav-link" onclick="openNav()" ></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="NomeLoja" href="index.html">PEDRO MOTA</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <p></p>
+              </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <br>
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="seuemail@mail.com">
+            <div id="emails"></div>
+          </div>
+        <div class="form-group col-md-6 col-md-6">
+          <label for="primeironome">Primeiro Nome</label>
+          <input type="text" class="form-control" id="primeironome" placeholder="Seu Nome">
+          <div id="primeironomes"></div>
+        </div>
+        <div class="form-group col-md-6 col-md-6">
+          <label for="sobrenome">Sobrenome</label>
+          <input type="text" class="form-control" id="sobrenome" placeholder="Seu Sobrenome">
+          <div id="sobrenomes"></div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep" placeholder="00000-027">
+          <div id="ceps"></div>
+        </div>
+        <div class="form-group col-md-6 col-md-6">
+          <label for="endereco">Endereço</label>
+          <input type="text" class="form-control" id="endereco" placeholder="Rua dos Bobos, nº 0">
+          <div id="enderecos"></div>
+        </div>
+        <div class="form-group col-md-6 col-md-6">
+          <label for="numero">Numero</label>
+          <input type="text" class="form-control" id="numero">
+          <div id="numeros"></div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cidade">Estado</label>
+          <input type="text" class="form-control" id="estado">
+          <div id="estados"></div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cidade">Cidade</label>
+          <input type="text" class="form-control" id="cidade">
+          <div id="cidades"></div>
+        </div>
+        <br>
+        <!-- <button id="ebtn" type="button" onclick="editar()" class="btn btn-primary">Editar</button> -->
+        <br>
+        <br>
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="https://www.instagram.com/peedroomota/" class="nav-link px-2 text-muted" target="_blank"><i class="fa fa-instagram fa-2xl" aria-hidden="true"></i></a></li>
+                <li class="nav-item"><a href="https://github.com/Psm0015" class="nav-link px-2 text-muted" target="_blank"><i class="fa-brands fa-github fa-2xl"></i></a></li>
+                <li class="nav-item"><a href="https://wa.me/5561999766526" class="nav-link px-2 text-muted" target="_blank"><i class="fa-brands fa-whatsapp fa-2xl"></i></a></li>
+                <li class="nav-item"><a href="https://www.linkedin.com/in/pedro-santos-da-mota-235314222/" class="nav-link px-2 text-muted" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a></li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2022 Pedro Mota, Student</p>
+        </footer>
+    </div>
+        <div class="modal" id="modallogin">
+          <!--MODAL DE LOGIN-->
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+        
+              <div class="modal-header">
+                <h4 class="modal-title">Fazer Login</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+        
+              <div class="modal-body">
+  
+                  <label for="novologin">Email:</label>
+                  <input class="form-control" type="text" placeholder="Seu Email" id="emaillogin">
+                  <div class="invalid-feedback" id="invalidlg"></div>
+          
+                  <br>
+          
+                  <label for="novasenha">Senha:</label>
+                  <input class="form-control" type="password" placeholder="Sua senha" id="senhalogin"> 
+                  
+                  <br>
+
+                  <div>Novo na PedroLoja? <a href="Cadastro.html">CADASTRE-SE</a></div>
+              </div>
+        
+              <div class="modal-footer">
+                <button id="cadfecha" type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                <button id="cadenvia" type="button" onclick="logar()" class="btn btn-primary">Login</button>
+                <!-- data-bs-dismiss="modal" -->
+              </div>
+        
+            </div>
+          </div>
+      </div>
+    
+</body>
+<script src="js/scriptslide.js"></script>
+<script src="https://kit.fontawesome.com/658c970e09.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/sidenav.js"></script>
+<script src="js/scriptlogin.js"></script>
+<script src="js/editarconta.js"></script>
+</html>

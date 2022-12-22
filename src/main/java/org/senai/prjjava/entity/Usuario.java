@@ -24,11 +24,18 @@ public class Usuario {
     private Integer id;
     @Column(unique = true)
     private String login;
-    // private String email;
-    private String nome;
+    private String primeiro_nome;
+    private String sobrenome;
+    private String cep;
+    private String endereco;
+    private String numero;
+    private String cidade;
+    private String estado;
     private String password;
     @Column(name="verification_code", length = 64)
     private String verificationCode;
+    private String carrinho;
+    private String tk;
     private boolean enabled;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "user_id"))

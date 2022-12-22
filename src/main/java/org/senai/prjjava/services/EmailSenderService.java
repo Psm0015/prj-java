@@ -16,7 +16,7 @@ public class EmailSenderService {
         SimpleMailMessage mensagem=new SimpleMailMessage();
         mensagem.setFrom("pedromota.loja@gmail.com");
         mensagem.setTo(user.getLogin());
-        mensagem.setText("Olá "+user.getNome()+
+        mensagem.setText("Olá "+user.getPrimeiro_nome()+
         ". Por favor clique no link para verificar seu registro:\n"
         +url+
         "\nObrigado!\n"+

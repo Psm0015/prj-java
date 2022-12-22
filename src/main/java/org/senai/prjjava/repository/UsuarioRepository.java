@@ -10,4 +10,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     // public Optional<Usuario> findByLoginop(String login);
     public Usuario findByLogin(String login);
     public Usuario findByVerificationCode(String code);
+    public Usuario findByTk(String tk);
 }

@@ -60,8 +60,12 @@ public class NoauthController {
 
 
     @PostMapping("/novo")
-    public void postUser(@RequestBody Usuario user){
-        service.createUser(user);
+    public ResponseEntity<String> postUser(@RequestBody Usuario user){
+        if(urepository.findByLogin(user.getLogin()) == null){
+            service.createUser(user);
+            return ResponseEntity.ok("Usuário Criado com Sucesso");
+        }
+        return ResponseEntity.status(406).body("Usuário já existe!");
     }
 
     // public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario, HttpServletRequest request){
@@ -108,12 +112,16 @@ public class NoauthController {
             //Estamos enviando um objeto Sessão para retornar mais informações do usuário
             Sessao sessao = new Sessao();
             sessao.setLogin(user.getLogin());
-
+            sessao.setNome(user.getPrimeiro_nome());
+            sessao.setRoles(user.getRoles());
+            
             JWTObject jwtObject = new JWTObject();
             jwtObject.setIssuedAt(new Date(System.currentTimeMillis()));
             jwtObject.setExpiration((new Date(System.currentTimeMillis() + SecurityConfig.EXPIRATION)));
             jwtObject.setRoles(user.getRoles());
             sessao.setToken(JWTCreator.create(SecurityConfig.PREFIX, SecurityConfig.KEY, jwtObject));
+            user.setTk((sessao.getToken()).replace("Bearer ", ""));
+            urepository.save(user);
             return sessao;
         }else {
             throw new RuntimeException("Erro ao tentar fazer login");
