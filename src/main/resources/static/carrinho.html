@@ -57,29 +57,22 @@
         </div>
     </nav>
     <div class="container">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="img/Promo hora.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/Promo Natal.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/Promo Virada.png" class="d-block w-100" alt="...">
-            </div>
-        </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+        
         <br>
-        <div id="produtosvtn"></div>
+        
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <th>NOME:</th>
+                <th>VALOR:</th>
+                <th><input id="valorpagar" type="button" value="Pagar" class="btn btn-success"></th>
+            </tr>
+            <tbody id="listacarrinho">
+
+            </tbody>
+        </table>
+
+        <br>
         <div class="modal" id="modallogin">
           <!--MODAL DE LOGIN-->
           <div class="modal-dialog modal-sm">
@@ -130,5 +123,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/sidenav.js"></script>
 <script src="js/scriptlogin.js"></script>
-<script src="js/prdslisst.js"></script>
+<!-- <script src="js/prdslisst.js"></script> -->
+<script src="js/carrinho.js"></script>
 </html>

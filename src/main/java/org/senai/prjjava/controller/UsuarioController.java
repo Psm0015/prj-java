@@ -51,10 +51,6 @@ public class UsuarioController {
         // this.service = service;
     }
 
-    @GetMapping("/buscarprds")
-    public @ResponseBody Iterable<Produto> buscarProdutos(){
-        return pRepository.findAll();
-    }
 
     //http://localhost:8080/api/produto/2 -  busca usuario unico usando a variável de path(caminho)
     @GetMapping("/buscarprd/{id}")
@@ -84,6 +80,10 @@ public class UsuarioController {
             return ResponseEntity.ok(urepository.save(usuario));
         }
         return ResponseEntity.badRequest().body(null);
+    }
+    @GetMapping("/buscarprds")
+    public @ResponseBody Iterable<Produto> buscarProdutos(){
+        return pRepository.findAll();
     }
     
 }

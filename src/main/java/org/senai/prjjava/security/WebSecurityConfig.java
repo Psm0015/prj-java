@@ -46,8 +46,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/MinhaConta**").permitAll()
                 .antMatchers("/Cadastro**").permitAll()
                 .antMatchers("/Admin**").permitAll()
+                .antMatchers("/confirmarEmail**").permitAll()
+                .antMatchers("/carrinho**").permitAll()
                 .antMatchers("/usuario/**").hasAnyRole("User","Admin")
-                .antMatchers("/adm/**").hasAnyRole("Admin")
+                // .antMatchers("/adm/**").hasAnyRole("Admin")
+                .antMatchers("/adm/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

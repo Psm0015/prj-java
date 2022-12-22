@@ -16,8 +16,8 @@ function cadastrar(){
 
     document.getElementById('ebtn').disabled=true
     document.getElementById('ebtn').innerHTML+='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">';
-    document.getElementById('fbtn').disabled=true
-    document.getElementById('fbtn').innerHTML+='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">';
+    // document.getElementById('fbtn').disabled=true
+    // document.getElementById('fbtn').innerHTML+='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">';
 
 
 

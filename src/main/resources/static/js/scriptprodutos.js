@@ -57,6 +57,7 @@ function editar(p){
     document.getElementById("nomeed").value = p.nome;
     document.getElementById("desced").value = p.descricao;
     document.getElementById("valored").value = p.valor;
+    document.getElementById("imged").value = p.img;
 }
 function editarconfirm(){
     pred = {}
@@ -64,6 +65,7 @@ function editarconfirm(){
     pred.nome = document.getElementById("nomeed").value;
     pred.descricao = document.getElementById("desced").value;
     pred.valor = document.getElementById("valored").value;
+    pred.img = document.getElementById("imged").value;
     ajax.open("PUT","http://localhost:8080/adm/atualizarprd");
     ajax.setRequestHeader("Authorization", sessionStorage.getItem('token'));
     ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -84,7 +86,7 @@ function apagar(p){
 }
 function apagarconfirm(){
     idApgr=document.getElementById("idapgr").value
-    ajax.open("DELETE","http://localhost:8080/api/produto/"+idApgr);
+    ajax.open("DELETE","http://localhost:8080/adm/deletarprd/"+idApgr);
     ajax.setRequestHeader("Authorization", "Bearer "+token);
     ajax.send();
     ajax.onload = function(){

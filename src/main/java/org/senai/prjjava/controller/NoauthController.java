@@ -2,7 +2,9 @@ package org.senai.prjjava.controller;
 
 import org.senai.prjjava.dtos.Login;
 import org.senai.prjjava.dtos.Sessao;
+import org.senai.prjjava.entity.Produto;
 import org.senai.prjjava.entity.Usuario;
+import org.senai.prjjava.repository.ProdutoRepository;
 import org.senai.prjjava.repository.UsuarioRepository;
 import org.senai.prjjava.security.JWTCreator;
 import org.senai.prjjava.security.JWTObject;
@@ -31,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 // import org.springframework.web.bind.annotation.ResponseBody;
 // import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,14 +49,16 @@ public class NoauthController {
     private final UsuarioRepository urepository;
     private final PasswordEncoder encoder;
     private EmailSenderService email;
+    private ProdutoRepository pRepository;
     @Autowired
     private UserService service;
     
 
-    public NoauthController(UsuarioRepository repository, PasswordEncoder encoder, EmailSenderService email){
+    public NoauthController(UsuarioRepository repository, PasswordEncoder encoder, EmailSenderService email, ProdutoRepository pRepository){
         this.urepository = repository;
         this.encoder = encoder;
         this.email = email;
+        this.pRepository = pRepository;
         // this.service = service;
     }
 
@@ -126,5 +131,9 @@ public class NoauthController {
         }else {
             throw new RuntimeException("Erro ao tentar fazer login");
         }
+    }
+    @GetMapping("/buscarprds")
+    public @ResponseBody Iterable<Produto> buscarProdutos(){
+        return pRepository.findAll();
     }
 }

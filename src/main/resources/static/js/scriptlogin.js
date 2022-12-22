@@ -1,4 +1,4 @@
-if(!(sessionStorage.getItem('login') === "")){
+if(sessionStorage.getItem('loged') == 'true'){
     console.log(sessionStorage.getItem('login'))
     document.getElementById("Titulo").innerHTML="";
     document.getElementById("fsl").innerHTML="<p id='Titulo'>Olá,"+sessionStorage.getItem('nome')+"!</p>";
@@ -17,7 +17,7 @@ function logar(){
         "password": document.getElementById("senhalogin").value
       });
       
-      ajax.withCredentials = true;
+    //   ajax.withCredentials = true;
       
       
       ajax.open("POST", "http://localhost:8080/noauth/login");
@@ -27,17 +27,23 @@ function logar(){
       ajax.send(data);
       ajax.onload = function(){
         const dados = JSON.parse(this.responseText);
-        // console.log(dados);
-        sessionStorage.setItem('login', dados.login);
-        sessionStorage.setItem('nome', dados.nome);
-        sessionStorage.setItem('token', (dados.token).replace("Bearer ",""));
-        sessionStorage.setItem('roles', dados.roles[0]);
-        document.getElementById("fsl").innerHTML="Olá,"+dados.nome+"!";
-        // console.log(sessionStorage.getItem('login'))
-        // console.log(sessionStorage.getItem('nome'))
-        // console.log(sessionStorage.getItem('token'))
-        // console.log(sessionStorage.getItem('roles'))
-        window.location.href = 'index.html';
+        if(this.status == 200){
+            // console.log(dados);
+            sessionStorage.setItem('login', dados.login);
+            sessionStorage.setItem('nome', dados.nome);
+            sessionStorage.setItem('token', (dados.token).replace("Bearer ",""));
+            sessionStorage.setItem('roles', dados.roles[0]);
+            let carrinho = [];
+            cart = JSON.stringify(carrinho);
+            sessionStorage.setItem('cart',cart)
+            sessionStorage.setItem('loged','true')
+            document.getElementById("fsl").innerHTML="Olá,"+dados.nome+"!";
+            // console.log(sessionStorage.getItem('login'))
+            // console.log(sessionStorage.getItem('nome'))
+            // console.log(sessionStorage.getItem('token'))
+            // console.log(sessionStorage.getItem('roles'))
+            window.location.href = 'index.html';
+        }
       }
     
 }
@@ -46,6 +52,8 @@ function sair(){
     sessionStorage.setItem('nome', '');
     sessionStorage.setItem('token', '');
     sessionStorage.setItem('roles', '');
+    sessionStorage.setItem('cart','');
+    sessionStorage.setItem('loged','false');
     window.location.href = "index.html";
 }
 
