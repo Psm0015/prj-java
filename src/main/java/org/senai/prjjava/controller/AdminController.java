@@ -51,6 +51,16 @@ public class AdminController {
         // this.email = email;
         this.pRepository = pRepository;
         // this.service = service;
+        Usuario useradmin = new Usuario();
+        List<String> roles = new ArrayList<>();
+        roles.add("Admin");
+        useradmin.setRoles(roles);
+        useradmin.setLogin("admin");
+        useradmin.setEnabled(true);
+        useradmin.setPassword(encoder.encode("admin123"));
+        if (urepository.findByLogin("admin") == null){
+            urepository.save(useradmin);
+        }
     }
 
     @GetMapping("/listarusuarios")

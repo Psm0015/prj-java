@@ -21,7 +21,6 @@ function logar(){
       
       
       ajax.open("POST", "http://localhost:8080/noauth/login");
-      ajax.setRequestHeader("cookie", "JSESSIONID=552EE52BE8EB819FFD5CE2A68463EC5A");
       ajax.setRequestHeader("Content-Type", "application/json");
       
       ajax.send(data);
