@@ -3,7 +3,7 @@ var prList;
 token=sessionStorage.getItem('token');
 listar()
 function listar(){
-    ajax.open("GET","http://localhost:8080/usuario/buscarprds");
+    ajax.open("GET","http:///usuario/buscarprds");
     ajax.setRequestHeader("Authorization", "Bearer "+token);
     ajax.send();
     ajax.onload = function(){
@@ -36,7 +36,7 @@ function incluir(){
     produto.descricao = document.getElementById("adddesc").value;
     produto.valor = document.getElementById("addvalor").value;
     produto.img = document.getElementById("addimg").value;
-    ajax.open("POST","http://localhost:8080/adm/addprd");
+    ajax.open("POST","http:///adm/addprd");
     ajax.setRequestHeader("Authorization", sessionStorage.getItem('token'));
     ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     ajax.send(JSON.stringify(produto));
@@ -66,7 +66,7 @@ function editarconfirm(){
     pred.descricao = document.getElementById("desced").value;
     pred.valor = document.getElementById("valored").value;
     pred.img = document.getElementById("imged").value;
-    ajax.open("PUT","http://localhost:8080/adm/atualizarprd");
+    ajax.open("PUT","http:///adm/atualizarprd");
     ajax.setRequestHeader("Authorization", sessionStorage.getItem('token'));
     ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     ajax.send(JSON.stringify(pred));
@@ -86,7 +86,7 @@ function apagar(p){
 }
 function apagarconfirm(){
     idApgr=document.getElementById("idapgr").value
-    ajax.open("DELETE","http://localhost:8080/adm/deletarprd/"+idApgr);
+    ajax.open("DELETE","http:///adm/deletarprd/"+idApgr);
     ajax.setRequestHeader("Authorization", "Bearer "+token);
     ajax.send();
     ajax.onload = function(){

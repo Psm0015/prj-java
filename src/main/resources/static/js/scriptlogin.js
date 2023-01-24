@@ -20,7 +20,7 @@ function logar(){
     //   ajax.withCredentials = true;
       
       
-      ajax.open("POST", "http://localhost:8080/noauth/login");
+      ajax.open("POST", "http:///noauth/login");
       ajax.setRequestHeader("Content-Type", "application/json");
       
       ajax.send(data);

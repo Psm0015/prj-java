@@ -28,7 +28,7 @@ public class UserService {
         user.setVerificationCode(validcod);
         user.setEnabled(false);
         
-        String siteURL = "http://localhost:8080/noauth/validar?validarcod="+validcod;
+        String siteURL = "http:///noauth/validar?validarcod="+validcod;
         email.emailconfirm(user, siteURL);
         user.setPassword(encoder.encode(pass));
         repository.save(user);

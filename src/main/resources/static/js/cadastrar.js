@@ -107,7 +107,7 @@ function cadastrar(){
             "estado":estado,
             "password":password
         });
-        xhr.open("POST", "http://localhost:8080/noauth/novo");
+        xhr.open("POST", "http:///noauth/novo");
           xhr.setRequestHeader("cookie", "JSESSIONID=552EE52BE8EB819FFD5CE2A68463EC5A");
           xhr.setRequestHeader("Content-Type", "application/json");
           
