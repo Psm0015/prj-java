@@ -1,7 +1,7 @@
 vitrine = document.getElementById('produtosvtn')
 const ajax = new XMLHttpRequest();
 ajax.withCredentials = true;
-ajax.open("GET", "http:///noauth/buscarprds");
+ajax.open("GET", "http://"+window.location.hostname+":8080/noauth/buscarprds");
 ajax.send();
 ajax.onload = function(){
     produtos = JSON.parse(this.responseText);

@@ -1,7 +1,7 @@
 const xhr = new XMLHttpRequest();
 buscardados()
 function buscardados(){
-xhr.open("GET", "http:///usuario/identificar/"+sessionStorage.getItem('token'));
+xhr.open("GET", "http://"+window.location.hostname+":8080/usuario/identificar/"+sessionStorage.getItem('token'));
 xhr.setRequestHeader("Authorization", sessionStorage.getItem("token"));
 // xhr.setRequestHeader("cookie", "JSESSIONID=552EE52BE8EB819FFD5CE2A68463EC5A");
 xhr.send();
@@ -88,11 +88,11 @@ function editar(){
         document.getElementById('estados').innerHTML="Insira um estado válido!"
         stts = false;
     }
-    //http:///usuario/editar
+    //http://"+window.location.hostname+":8080/usuario/editar
 
     if(stts){
 
-        xhr.open("PUT", "http:///usuario/editar/"+sessionStorage.getItem("token"));
+        xhr.open("PUT", "http://"+window.location.hostname+":8080/usuario/editar/"+sessionStorage.getItem("token"));
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("Authorization", sessionStorage.getItem("token"));
         console.log(editarusuario)

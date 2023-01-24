@@ -12,7 +12,7 @@ function vercarrinho(){
             console.log(obj[i])
             const ajax = new XMLHttpRequest();
             ajax.withCredentials = true;
-            ajax.open("GET", "http:///usuario/buscarprd/"+obj[i]);
+            ajax.open("GET", "http://"+window.location.hostname+":8080/usuario/buscarprd/"+obj[i]);
             ajax.setRequestHeader("Authorization", sessionStorage.getItem('token'));
             ajax.send();
             ajax.onload = function(){

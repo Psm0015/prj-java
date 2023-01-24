@@ -35,7 +35,7 @@ public class UsuarioController {
     }
 
 
-    //http:///api/produto/2 -  busca usuario unico usando a variável de path(caminho)
+    //http://"+window.location.hostname+":8080/api/produto/2 -  busca usuario unico usando a variável de path(caminho)
     @GetMapping("/buscarprd/{id}")
     public @ResponseBody Optional<Produto> buscarProduto(@PathVariable Integer id){
         return pRepository.findById(id);

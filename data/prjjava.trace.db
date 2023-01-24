@@ -1,3 +1,15 @@
 2023-01-23 21:36:58 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" not found; SQL statement:
 select usuario0_.id as id1_2_, usuario0_.carrinho as carrinho2_2_, usuario0_.cep as cep3_2_, usuario0_.cidade as cidade4_2_, usuario0_.enabled as enabled5_2_, usuario0_.endereco as endereco6_2_, usuario0_.estado as estado7_2_, usuario0_.login as login8_2_, usuario0_.numero as numero9_2_, usuario0_.password as passwor10_2_, usuario0_.primeiro_nome as primeir11_2_, usuario0_.sobrenome as sobreno12_2_, usuario0_.tk as tk13_2_, usuario0_.verification_code as verific14_2_ from usuario usuario0_ where usuario0_.login=? [42102-200]
+2023-01-24 19:33:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUTO" not found; SQL statement:
+select produto0_.id as id1_0_, produto0_.descricao as descrica2_0_, produto0_.img as img3_0_, produto0_.nome as nome4_0_, produto0_.valor as valor5_0_ from produto produto0_ [42102-200]
+2023-01-24 19:33:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" not found; SQL statement:
+select usuario0_.id as id1_2_, usuario0_.carrinho as carrinho2_2_, usuario0_.cep as cep3_2_, usuario0_.cidade as cidade4_2_, usuario0_.enabled as enabled5_2_, usuario0_.endereco as endereco6_2_, usuario0_.estado as estado7_2_, usuario0_.login as login8_2_, usuario0_.numero as numero9_2_, usuario0_.password as passwor10_2_, usuario0_.primeiro_nome as primeir11_2_, usuario0_.sobrenome as sobreno12_2_, usuario0_.tk as tk13_2_, usuario0_.verification_code as verific14_2_ from usuario usuario0_ where usuario0_.login=? [42102-200]
+2023-01-24 19:34:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" not found; SQL statement:
+select usuario0_.id as id1_2_, usuario0_.carrinho as carrinho2_2_, usuario0_.cep as cep3_2_, usuario0_.cidade as cidade4_2_, usuario0_.enabled as enabled5_2_, usuario0_.endereco as endereco6_2_, usuario0_.estado as estado7_2_, usuario0_.login as login8_2_, usuario0_.numero as numero9_2_, usuario0_.password as passwor10_2_, usuario0_.primeiro_nome as primeir11_2_, usuario0_.sobrenome as sobreno12_2_, usuario0_.tk as tk13_2_, usuario0_.verification_code as verific14_2_ from usuario usuario0_ where usuario0_.login=? [42102-200]
+2023-01-24 19:34:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" not found; SQL statement:
+select usuario0_.id as id1_2_, usuario0_.carrinho as carrinho2_2_, usuario0_.cep as cep3_2_, usuario0_.cidade as cidade4_2_, usuario0_.enabled as enabled5_2_, usuario0_.endereco as endereco6_2_, usuario0_.estado as estado7_2_, usuario0_.login as login8_2_, usuario0_.numero as numero9_2_, usuario0_.password as passwor10_2_, usuario0_.primeiro_nome as primeir11_2_, usuario0_.sobrenome as sobreno12_2_, usuario0_.tk as tk13_2_, usuario0_.verification_code as verific14_2_ from usuario usuario0_ where usuario0_.login=? [42102-200]
